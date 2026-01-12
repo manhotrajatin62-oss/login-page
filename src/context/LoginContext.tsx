@@ -22,7 +22,7 @@ const LoginContextProvider = ({ children }: any) => {
 
   const [formSuccess, setFormSuccess] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleEmailChange(e: any) {
     const emailRegex = /^[A-Za-z0-9.]+@[A-Za-z0-9-]+\.(com|gov\.in|in)$/;
@@ -60,48 +60,51 @@ const LoginContextProvider = ({ children }: any) => {
     setPassword(password);
 
     if (!password.trim()) {
-      setPasswordStatus({
+      return setPasswordStatus({
         status: "error",
         message: "Password is required",
         success: false,
       });
-      return;
     }
 
-    if (password.length < 4) {
-      setPasswordStatus({
+    if (password.length < 6) {
+      return setPasswordStatus({
         status: "error",
-        message: "Password too short",
+        message: "Password must be at least 6 characters",
         success: false,
       });
-      return;
     }
 
-    if (password.length >= 4 && password.length < 6) {
-      setPasswordStatus({
+    const hasUpper = /[A-Z]/.test(password);
+    const hasLower = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSymbol = /[^A-Za-z0-9]/.test(password);
+
+    const strength = [hasUpper, hasLower, hasNumber, hasSymbol].filter(
+      Boolean,
+    ).length;
+
+    if (strength <= 1) {
+      return setPasswordStatus({
         status: "weak",
-        message: "Password is weak",
+        message: "Use uppercase, numbers and symbols",
         success: true,
       });
-      return;
     }
 
-    if (password.length >= 6 && password.length < 8) {
-      setPasswordStatus({
+    if (strength === 2 || strength === 3) {
+      return setPasswordStatus({
         status: "medium",
         message: "Password is medium",
         success: true,
       });
-      return;
     }
 
-    setPasswordStatus({
+    return setPasswordStatus({
       status: "strong",
-      message: "Password is strong",
+      message: "Strong password",
       success: true,
     });
-
-    return;
   }
 
   function handleSubmit(e: any) {
@@ -132,11 +135,14 @@ const LoginContextProvider = ({ children }: any) => {
     }
 
     setFormSuccess(true);
-    localStorage.setItem("user" , JSON.stringify({
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
         email,
-        password
-    }))
-    navigate("/dashboard")
+        password,
+      }),
+    );
+    navigate("/dashboard");
   }
 
   return (
