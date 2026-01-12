@@ -1,9 +1,12 @@
-import Sidebar from "./sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 const Dashboard = () => {
   return (
     <>
-      <header></header>
+      <header className="ml-75 mt-10 mr-8 mb-6">
+        <Navbar/>
+      </header>
 
       <main>
         <Sidebar />

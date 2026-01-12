@@ -1,4 +1,4 @@
-import { Dropdown } from "../../../components/Icons";
+import { Dropdown } from "../Icons";
 
 const SidebarOptions = ({
   icon,

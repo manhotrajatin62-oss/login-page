@@ -1,5 +1,5 @@
-import { BrandLogo, Dashboard, Dropdown } from "../../../components/Icons";
-import profile from "../../../assets/profile.png";
+import { BrandLogo, Dashboard} from "../Icons";
+import profile from "../../assets/profile.png";
 import SidebarOptions from "./SidebarOptions";
 import { useState } from "react";
 

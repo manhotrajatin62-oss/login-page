@@ -6,7 +6,7 @@ import {
   Components,
   Ecommerce,
   Pages,
-} from "../../../components/Icons";
+} from "../Icons";
 import SidebarPages from "./SidebarPages";
 import SidebarTop from "./SidebarTop";
 

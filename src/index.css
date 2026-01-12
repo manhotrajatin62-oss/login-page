@@ -1,7 +1,15 @@
+@font-face {
+    font-family: "Roboto";
+    src: url(assets/Roboto-VariableFont_wdth,wght.ttf);
+}
+
 @import "tailwindcss";
 
 @theme {
-    --color-mud: #4F4F52
+    --color-mud: #4F4F52;
+    --color-grey : #7B809A;
+    --color-dark-blue: #344767;
+    --color-red: #E91F63;
 }
 
 *{
