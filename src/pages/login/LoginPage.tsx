@@ -2,6 +2,7 @@ import login from "../../assets/login.png";
 import LoginForm from "./LoginForm";
 
 const LoginPage = () => {
+
   return (
     <main className="flex h-dvh w-dvw">
       {/* Image section */}

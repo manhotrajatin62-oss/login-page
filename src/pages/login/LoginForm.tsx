@@ -13,6 +13,14 @@ const LoginForm = () => {
     handlePasswordChange,
     handleEmailChange,
     handleSubmit,
+    handleNameChange,
+    name,
+    nameStatus,
+    confirmPassword,
+    confirmPasswordStatus,
+    handleConfirmPasswordChange,
+    isLogin,
+    setIsLogin,
   }: any = useContext(LoginContext);
 
   const [toggleSwitch, setToggleSwitch] = useState(false);
@@ -21,20 +29,61 @@ const LoginForm = () => {
     <section className="flex flex-col gap-2">
       {/* heading */}
       <div className="flex flex-col items-center gap-3">
-        <h1 className="text-xl font-bold text-[#344767]">Sign In</h1>
+        <h1 className="text-xl font-bold text-[#344767]">
+          {isLogin ? "Sign In" : "Sign Up"}
+        </h1>
         <h2 className="text-sm text-[#7B809A]">
-          Enter your email and password to Sign In
+          {isLogin
+            ? "Enter your email and password to Sign In"
+            : "Enter your name, email and password to Sign Up"}
         </h2>
       </div>
 
+      {/* name input */}
+      {!isLogin && (
+        <div className="mt-14.5 h-15">
+          <label htmlFor="name">
+            <input
+              value={name}
+              onChange={handleNameChange}
+              name="name"
+              id="name"
+              type="text"
+              autoComplete="on"
+              placeholder="Name"
+              className={`h-10.5 w-90.25 rounded-lg border-2 bg-white px-4 text-sm outline-none placeholder:text-[#7B809A] ${
+                nameStatus.status === "error"
+                  ? "border-red-500"
+                  : nameStatus.status === "success"
+                    ? "border-green-500"
+                    : "border-[#C7CCD0]"
+              }`}
+            />
+          </label>
+
+          {nameStatus.status !== "idle" && (
+            <p
+              className={`text-sm ${
+                nameStatus.status === "error"
+                  ? "text-red-500"
+                  : "text-green-600"
+              }`}
+            >
+              {nameStatus.message}
+            </p>
+          )}
+        </div>
+      )}
+
       {/* email input */}
-      <div className="mt-14.5 h-15">
+      <div className={`${!isLogin ? "mt-0" : "mt-14.5"} h-15`}>
         <label htmlFor="email">
           <input
             value={email}
             onChange={handleEmailChange}
             name="email"
             id="email"
+            type="email"
             autoComplete="on"
             placeholder="Email"
             className={`h-10.5 w-90.25 rounded-lg border-2 bg-white px-4 text-sm outline-none placeholder:text-[#7B809A] ${
@@ -65,7 +114,7 @@ const LoginForm = () => {
             <input
               value={password}
               onChange={handlePasswordChange}
-              placeholder="Current password"
+              placeholder={isLogin ? "Current password" : "Enter password"}
               className={`${passwordStatus.status === "error" ? "border-red-500" : passwordStatus.status === "weak" ? "border-amber-700" : passwordStatus.status === "medium" ? "border-orange-500" : passwordStatus.status === "strong" ? "border-green-500" : "border-[#C7CCD0]"} h-10.5 w-90.25 rounded-lg border-2 bg-white pr-10 pl-4 text-sm outline-none placeholder:text-[#7B809A]`}
               type={showHidePassword ? "text" : "password"}
               name="password"
@@ -114,6 +163,60 @@ const LoginForm = () => {
         )}
       </div>
 
+      {/* confirm password input */}
+      {!isLogin && (
+        <div className="relative h-15">
+          <div>
+            <label htmlFor="confirmPassword">
+              <input
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                placeholder="Confirm password"
+                className={`${confirmPasswordStatus.status === "error" ? "border-red-500" : confirmPasswordStatus.status === "success" ? "border-green-500" : "border-[#C7CCD0]"} h-10.5 w-90.25 rounded-lg border-2 bg-white pr-10 pl-4 text-sm outline-none placeholder:text-[#7B809A]`}
+                type={showHidePassword ? "text" : "password"}
+                name="confirmPassword"
+                id="confirmPassword"
+                autoComplete="on"
+              />
+            </label>
+
+            {confirmPassword?.trim().length > 0 && (
+              <div className="absolute top-3 right-3">
+                {showHidePassword ? (
+                  <FaEye
+                    color="#7B809A"
+                    className="cursor-pointer"
+                    size={20}
+                    onClick={() => setShowHidePassword(false)}
+                  />
+                ) : (
+                  <FaEyeSlash
+                    color="#7B809A"
+                    className="cursor-pointer"
+                    size={20}
+                    onClick={() => setShowHidePassword(true)}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+
+          {confirmPasswordStatus.status !== "idle" && (
+            <p
+              className={`text-sm ${
+                confirmPasswordStatus.status === "error"
+                  ? "text-red-500"
+                  : confirmPasswordStatus.status === "success"
+                    ? "text-green-600"
+                    : "text-black"
+              }`}
+            >
+              {confirmPasswordStatus.message}
+            </p>
+          )}
+        </div>
+      )}
+
       {/* remember me button */}
 
       <div className="flex items-center gap-2">
@@ -134,16 +237,19 @@ const LoginForm = () => {
         onClick={handleSubmit}
         className="mt-11 h-10 w-full cursor-pointer rounded-lg bg-linear-to-b from-[#E93B77] to-[#DA1F63] p-2 text-xs font-bold text-white"
       >
-        SIGN IN
+        {isLogin ? "SIGN IN" : "SIGN UP"}
       </button>
 
       {/* sign up button */}
 
       <div className="mx-auto mt-8 flex items-center gap-2 text-sm text-[#7B809A]">
         <p>
-          Don't have an account?{" "}
-          <span className="cursor-pointer font-bold text-[#DA1F63]">
-            Sign Up
+          {isLogin ? "Don't" : "Already"} have an account?{" "}
+          <span
+            onClick={() => setIsLogin(!isLogin)}
+            className="cursor-pointer font-bold text-[#DA1F63]"
+          >
+            {isLogin ? "Sign Up" : "Sign In"}
           </span>
         </p>
       </div>
