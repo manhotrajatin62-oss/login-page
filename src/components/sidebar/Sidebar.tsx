@@ -68,7 +68,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="fixed top-4 bottom-4 left-4 flex w-60 flex-col overflow-auto custom-scroll rounded-xl bg-linear-to-b from-[#3E3D45] to-[#202020] p-4 text-sm text-white">
+    <aside className="fixed top-4 bottom-4 left-4 flex w-55 flex-col overflow-auto custom-scroll rounded-xl bg-linear-to-b from-[#3E3D45] to-[#202020] p-4 text-sm text-white">
       <SidebarTop />
 
       <SidebarPages heading={"PAGES"} data={pagesData} />

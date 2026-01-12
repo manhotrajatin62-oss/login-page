@@ -8,6 +8,7 @@ const SidebarPages = ({ data, heading }: any) => {
       {data?.map((item: any) => {
         return (
           <SidebarOptions
+          key={item?.title}
             icon={item?.icon}
             title={item?.title}
             dropdown={item?.dropdown}
