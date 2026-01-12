@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+    --color-mud: #4F4F52
+}
+
 *{
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
@@ -7,4 +11,8 @@
 
 body{
     background-color: #F0F2F5;
+}
+
+.custom-scroll::-webkit-scrollbar{
+    display: none;
 }
