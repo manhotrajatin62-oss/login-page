@@ -204,11 +204,11 @@ export const Menu: any = () => (
   </svg>
 );
 
-export const User: any = ({ card }: any) => (
+export const User: any = ({ card, size }: any) => (
   <svg
     className={card ? "cursor-default" : "cursor-pointer"}
-    width="20"
-    height="20"
+    width={size ? size : "20"}
+    height={size ? size : "20"}
     viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +264,7 @@ export const Contact: any = () => (
 
 export const Setting: any = () => (
   <svg
-  className="cursor-pointer"
+    className="cursor-pointer"
     width="16"
     height="16"
     viewBox="0 0 16 16"

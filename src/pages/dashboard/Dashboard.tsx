@@ -23,11 +23,11 @@ const Dashboard = () => {
 
   const columns = [
     {
-      name: <div style={{ paddingLeft: "1rem" }}>PRODUCT</div>,
+      name: <div className="pl-2">PRODUCT</div>,
       grow: 4,
       cell: (row: any) => (
-        <div className="flex items-center gap-4 py-3 pl-4 text-sm">
-          <img src={row.image} alt="product" />
+        <div className="flex whitespace-nowrap items-center gap-4 py-3 pl-2 text-xs lg:text-sm">
+          <img className="w-8 h-8 lg:w-full lg:h-full" src={row.image} alt="product" />
           <div className="text-left">
             <p className="text-dark-blue font-bold">{row.title}</p>
             <p className="text-grey">
@@ -39,13 +39,13 @@ const Dashboard = () => {
     },
     {
       name: "VALUE",
-      cell: (row: any) => <span className="text-grey">{row.value}</span>,
       center: true,
+      cell: (row: any) => <span className="text-grey">{row.value}</span>,
     },
     {
       name: "ADS SPENT",
-      cell: (row: any) => <span className="text-grey">{row.ads}</span>,
       center: true,
+      cell: (row: any) => <span className="text-grey">{row.ads}</span>,
     },
     {
       name: "REFUNDS",
@@ -114,22 +114,22 @@ const Dashboard = () => {
 
   return (
     <>
-      <header className="mt-10 mr-8 mb-6 ml-70">
+      <header className="ml-20 mt-5 lg:mt-10 mr-8 mb-6 lg:ml-70">
         <Navbar />
       </header>
 
-      <main className="mr-5 ml-65">
+      <main className="mr-5 ml-5 lg:ml-65">
         <Sidebar />
 
         {/* 1st row */}
-        <section className="flex h-38 items-end gap-5 text-sm">
+        <section className="flex mt-10 lg:mt-0 lg:h-38 flex-wrap lg:flex-nowrap items-end gap-10 lg:gap-5 text-sm">
           {cardsData?.map((item) => {
             return <Card key={item?.heading} item={item} />;
           })}
         </section>
 
         {/* 2nd row */}
-        <section className="mt-12 flex items-center gap-6">
+        <section className="mt-12 flex flex-wrap lg:flex-nowrap items-center gap-10 lg:gap-6">
           {chartsData?.map((item: any) => {
             return <ChartCard key={item?.heading} item={item} />;
           })}
@@ -149,8 +149,8 @@ const Dashboard = () => {
         </section>
       </main>
 
-      <footer className="my-11 mr-14 ml-65 text-sm">
-        <div className="text-grey ml-4 flex items-center justify-between">
+      <footer className="my-11 mr-14 lg:ml-65 ml-5 text-xs lg:text-sm">
+        <div className="text-grey ml-4 flex flex-wrap lg:flex-nowrap gap-8 items-center justify-between">
           <p>
             © 2022, made with ❤️ by{" "}
             <span className="font-bold">Creative Tim</span> for a better web.
