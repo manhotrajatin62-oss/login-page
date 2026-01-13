@@ -1,6 +1,6 @@
 const Card = ({ item }: any) => {
   return (
-    <section className="relative flex h-28 w-70 flex-col rounded-xl bg-white px-4 py-3 shadow-md shadow-gray-400">
+    <section className="relative grow flex h-28 w-70 flex-col rounded-xl bg-white px-4 py-3 shadow-md shadow-gray-400">
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, ${item?.gradient?.from}, ${item?.gradient?.to})`,

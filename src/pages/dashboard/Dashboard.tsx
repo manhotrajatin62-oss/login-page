@@ -149,7 +149,21 @@ const Dashboard = () => {
         </section>
       </main>
 
-      <footer></footer>
+      <footer className="my-11 mr-14 ml-65 text-sm">
+        <div className="text-grey ml-4 flex items-center justify-between">
+          <p>
+            © 2022, made with ❤️ by{" "}
+            <span className="font-bold">Creative Tim</span> for a better web.
+          </p>
+
+          <div className="flex items-center gap-8">
+            <a href="#">Creative Tim</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+            <a href="#">License</a>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };

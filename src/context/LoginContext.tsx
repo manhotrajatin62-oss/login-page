@@ -125,27 +125,21 @@ const LoginContextProvider = ({ children }: any) => {
       Boolean,
     ).length;
 
-    if (strength <= 1) {
+    if(strength < 4){
       return setPasswordStatus({
         status: "weak",
-        message: "Use uppercase, numbers and symbols",
-        success: true,
+        message: "Use uppercase, lowercase, numbers and symbols",
+        success: false,
       });
     }
 
-    if (strength === 2 || strength === 3) {
+    if (strength === 4) {
       return setPasswordStatus({
-        status: "medium",
-        message: "Password is medium",
+        status: "strong",
+        message: "Strong password",
         success: true,
       });
     }
-
-    return setPasswordStatus({
-      status: "strong",
-      message: "Strong password",
-      success: true,
-    });
   }
 
   function handleConfirmPasswordChange(e: any) {
@@ -175,7 +169,6 @@ const LoginContextProvider = ({ children }: any) => {
     });
   }
 
-
   function handleSubmit(e: any) {
     e.preventDefault();
     setFormSuccess(false);
@@ -201,10 +194,29 @@ const LoginContextProvider = ({ children }: any) => {
       setFormSuccess(true);
       localStorage.setItem("user", JSON.stringify({ email, password }));
       navigate("/dashboard");
+      setEmail("");
+      setPassword("");
+      setEmailStatus({
+        status: "idle",
+        message: "",
+        success: false,
+      });
+
+      setPasswordStatus({
+        status: "idle",
+        message: "",
+        success: false,
+      });
+
       return;
     }
 
-    if (!name.trim() && !email.trim() && !password.trim() && !confirmPassword.trim()) {
+    if (
+      !name.trim() &&
+      !email.trim() &&
+      !password.trim() &&
+      !confirmPassword.trim()
+    ) {
       setNameStatus({
         status: "error",
         message: "Name is required",
@@ -243,6 +255,34 @@ const LoginContextProvider = ({ children }: any) => {
     setFormSuccess(true);
     localStorage.setItem("user", JSON.stringify({ name, email, password }));
     navigate("/dashboard");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setName("");
+
+    setEmailStatus({
+      status: "idle",
+      message: "",
+      success: false,
+    });
+
+    setPasswordStatus({
+      status: "idle",
+      message: "",
+      success: false,
+    });
+
+    setNameStatus({
+      status: "idle",
+      message: "",
+      success: false,
+    });
+
+    setConfirmPasswordStatus({
+      status: "idle",
+      message: "",
+      success: false,
+    });
   }
 
   return (

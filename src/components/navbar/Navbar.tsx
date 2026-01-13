@@ -1,6 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { Bell, Home, Menu, Setting, User } from "../Icons";
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
+
+  function clearStorage(){
+    localStorage.clear();
+    navigate("/login")
+  }
+
   return (
     <nav className="flex items-center justify-between text-sm">
       {/* breadcrumbs */}
@@ -28,7 +37,13 @@ const Navbar = () => {
           id="search"
           autoComplete="on"
         />
-        <User />
+        <div className="relative group">
+          <User />
+
+       <div className="w-30 absolute h-10 transition-all duration-200 -left-10 opacity-0 group-hover:opacity-100 z-90 bg-white shadow-md shadow-gray-400">
+            <p onClick={clearStorage} className="p-2 cursor-pointer text-red-700 text-center">Logout</p>
+          </div>
+        </div>
         <div className="mr-5 ml-2 flex items-center gap-4">
           <Setting />
           <div className="relative">

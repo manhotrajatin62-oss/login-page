@@ -2,13 +2,13 @@ import { Clock } from "./Icons";
 
 const ChartCard = ({ item }: any) => {
   return (
-    <section className="relative flex h-61 w-81 flex-col rounded-lg bg-white px-4 py-3 text-xs shadow-md shadow-gray-400">
+    <section className="relative grow flex h-61 w-81 flex-col rounded-lg bg-white px-4 py-3 text-xs shadow-md shadow-gray-400">
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, ${item?.gradient?.from}, ${item?.gradient?.to})`,
           boxShadow: `0 2px 2px ${item?.shadow}`,
         }}
-        className="absolute -top-5 left-4 h-40 w-73 rounded-lg shadow-md"
+        className="absolute -top-5 left-4 h-40 w-[90%] rounded-lg shadow-md" //w-72
       >
         {item?.chart}
       </div>

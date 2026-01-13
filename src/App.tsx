@@ -9,8 +9,6 @@ const App = () => {
   return (
     <>
       <LoginContextProvider>
-        <header></header>
-
         <main>
           <Routes>
             <Route path="/" element={<Navigate to="/login" replace />} />
@@ -34,8 +32,6 @@ const App = () => {
             />
           </Routes>
         </main>
-
-        <footer></footer>
       </LoginContextProvider>
     </>
   );

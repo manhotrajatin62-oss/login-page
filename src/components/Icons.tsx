@@ -264,6 +264,7 @@ export const Contact: any = () => (
 
 export const Setting: any = () => (
   <svg
+  className="cursor-pointer"
     width="16"
     height="16"
     viewBox="0 0 16 16"
@@ -330,7 +331,7 @@ export const GreenDown: any = () => (
     <path
       d="M0.707031 1.58582L4.94967 5.82846L9.19231 1.58582"
       stroke="#4CAF50"
-      stroke-width="2"
+      strokeWidth="2"
     />
   </svg>
 );
@@ -346,7 +347,7 @@ export const RedUp: any = () => (
     <path
       d="M9.19238 6.24268L4.94974 2.00004L0.707102 6.24268"
       stroke="#E91F63"
-      stroke-width="2"
+      strokeWidth="2"
     />
   </svg>
 );
