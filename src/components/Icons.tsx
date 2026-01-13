@@ -318,3 +318,35 @@ export const Clock: any = () => (
     />
   </svg>
 );
+
+export const GreenDown: any = () => (
+  <svg
+    width="10"
+    height="8"
+    viewBox="0 0 10 8"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0.707031 1.58582L4.94967 5.82846L9.19231 1.58582"
+      stroke="#4CAF50"
+      stroke-width="2"
+    />
+  </svg>
+);
+
+export const RedUp: any = () => (
+  <svg
+    width="10"
+    height="8"
+    viewBox="0 0 10 8"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M9.19238 6.24268L4.94974 2.00004L0.707102 6.24268"
+      stroke="#E91F63"
+      stroke-width="2"
+    />
+  </svg>
+);

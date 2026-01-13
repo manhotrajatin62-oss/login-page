@@ -6,7 +6,7 @@ const ChartCard = ({ item }: any) => {
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, ${item?.gradient?.from}, ${item?.gradient?.to})`,
-          boxShadow: `0 5px 5px ${item?.shadow}`,
+          boxShadow: `0 2px 2px ${item?.shadow}`,
         }}
         className="absolute -top-5 left-4 h-40 w-73 rounded-lg shadow-md"
       >
