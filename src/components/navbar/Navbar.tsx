@@ -23,17 +23,19 @@ const Navbar = () => {
         <input
           placeholder="Search here"
           className="border-grey h-full w-43 rounded-lg border px-4 outline-0"
-          type="text"
+          type="search"
           name="search"
           id="search"
           autoComplete="on"
         />
         <User />
-        <div className="flex items-center ml-2 gap-4 mr-5">
+        <div className="mr-5 ml-2 flex items-center gap-4">
           <Setting />
           <div className="relative">
             <Bell />
-            <p className="bg-red py-0.5 px-2 rounded-full text-white text-xs absolute -top-2.5 -right-4.5">11</p>
+            <p className="bg-red absolute -top-2.5 -right-4.5 rounded-full px-2 py-0.5 text-xs text-white">
+              11
+            </p>
           </div>
         </div>
       </div>

@@ -1,10 +1,17 @@
-import { BrandLogo, Dashboard} from "../Icons";
+import { BrandLogo, Dashboard } from "../Icons";
 import profile from "../../assets/profile.png";
 import SidebarOptions from "./SidebarOptions";
 import { useState } from "react";
 
 const SidebarTop = () => {
   const [activeDropdown, setActiveDropdown] = useState(true);
+
+  let active = true;
+  if (activeDropdown) {
+    active = true;
+  } else {
+    active = false;
+  }
 
   return (
     <section>
@@ -26,7 +33,7 @@ const SidebarTop = () => {
         <div onClick={() => setActiveDropdown(!activeDropdown)}>
           <SidebarOptions
             activeDropdown={activeDropdown}
-            active
+            active={active}
             icon={<Dashboard />}
             title={"Dashboard"}
             dropdown

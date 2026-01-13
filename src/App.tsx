@@ -23,7 +23,7 @@ const App = () => {
                 </PublicRoute>
               }
             />
-            
+
             <Route
               path="/dashboard"
               element={
