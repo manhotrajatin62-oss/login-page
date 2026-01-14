@@ -6,7 +6,6 @@ import {
   Changelog,
   Components,
   Ecommerce,
-  Menu,
   Pages,
 } from "../Icons";
 import SidebarPages from "./SidebarPages";
@@ -77,20 +76,27 @@ const Sidebar = () => {
       <aside className="block lg:hidden">
         <section
           onClick={() => setSidebar(true)}
-          className="bg-linear-to-b from-[#3E3D45] to-[#202020] absolute top-5 left-5 z-97 rounded-md p-2"
+          className="absolute top-5 left-5 z-97 rounded-md bg-linear-to-b from-[#3E3D45] to-[#202020] p-2"
         >
           <IoMenu color="white" size={20} />
         </section>
 
-        {sidebar && <div
-          onClick={() => setSidebar(false)}
-          className="fixed top-0 z-98 right-0 bottom-0 left-0 bg-black/40"
-        />}
+        {sidebar && (
+          <div
+            onClick={() => setSidebar(false)}
+            className="fixed top-0 right-0 bottom-0 left-0 z-98 bg-black/40"
+          />
+        )}
 
         <aside
           className={`${sidebar ? "left-0" : "-left-100"} custom-scroll fixed top-0 bottom-0 z-99 flex w-55 flex-col overflow-auto bg-linear-to-b from-[#3E3D45] to-[#202020] p-4 pt-10 text-sm text-white transition-all duration-300 xl:hidden`}
         >
-          <IoCloseCircleOutline onClick={()=>setSidebar(false)} className="absolute top-2 right-2" size={20} color="white"/>
+          <IoCloseCircleOutline
+            onClick={() => setSidebar(false)}
+            className="absolute top-2 right-2"
+            size={20}
+            color="white"
+          />
           <SidebarTop />
 
           <SidebarPages heading={"PAGES"} data={pagesData} />
